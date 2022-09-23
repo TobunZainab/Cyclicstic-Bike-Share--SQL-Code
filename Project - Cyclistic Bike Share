@@ -1,0 +1,56 @@
+-- Search for duplicate data in all tables
+SELECT ride_id, COUNT(ride_id) 
+FROM Cyclistic_bike_share. 2021_05
+GROUP BY ride_id
+HAVING COUNT(ride_id) > 1;
+
+-- Change column data type from text to datetime
+
+ALTER TABLE 2021_05
+MODIFY COLUMN started_at datetime,
+MODIFY COLUMN ended_at datetime; 
+
+-- Join all 12 tables and create a new view
+
+CREATE VIEW bike_share AS (SELECT * FROM Cyclistic_bike_share. 2021_05
+	UNION SELECT * FROM Cyclistic_bike_share. 2021_06
+	UNION SELECT * FROM Cyclistic_bike_share. 2021_07
+	UNION SELECT * FROM Cyclistic_bike_share. 2021_08
+	UNION SELECT * FROM Cyclistic_bike_share. 2021_09
+    UNION SELECT * FROM Cyclistic_bike_share. 2021_10
+    UNION SELECT * FROM Cyclistic_bike_share. 2021_11
+    UNION SELECT * FROM Cyclistic_bike_share. 2021_12
+    UNION SELECT * FROM Cyclistic_bike_share. 2022_01
+    UNION SELECT * FROM Cyclistic_bike_share. 2022_02
+    UNION SELECT * FROM Cyclistic_bike_share. 2022_03
+    UNION SELECT * FROM Cyclistic_bike_share. 2022_04);
+
+--Extract date and time from a datetime data type
+
+SELECT CAST(started_at AS TIME), 
+CAST(ended_at AS TIME), 
+CAST(started_at AS DATE), 
+CAST(ended_at AS DATE)
+FROM Cyclistic_bike_share.bike_share;
+
+
+-- A new table was created
+
+CREATE TABLE bike AS (SELECT member_casual, 
+CAST(started_at AS TIME) AS start_time, 
+CAST(ended_at AS TIME) AS end_time, 
+CAST(started_at AS DATE) AS start_date, 
+CAST(ended_at AS DATE)AS end_date,
+DAYNAME(started_at) AS day_name, MONTHNAME(started_at) AS month_name,
+bs.ended_at - bs.started_at AS duration
+FROM Cyclistic_bike_share.bike_share AS bs);
+
+-- Aggerate Function
+
+SELECT COUNT(*)
+FROM bike
+WHERE month_name = 'May' AND member_casual = 'casual';
+
+SELECT COUNT(*)
+FROM bike
+WHERE month_name = 'June' AND member_casual = 'member';
