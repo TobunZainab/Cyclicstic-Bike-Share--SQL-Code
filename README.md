@@ -10,13 +10,16 @@ BUSINESS GOAL
 
 The company aims to design marketing strategies to convert casual riders into annual member as it is has been concluded that annual members are much more profitable thancasual riders. The marketing team needs to better understand how annual members and casual riders differ and why casual riders will buy annual membership. 
 
-BUSINESS TASKS
+BUSINESS TASK
+
 Analyse 12 months data of the cyclistic bike share program to study trends of users inorder to help create a good marketing strategy.
 
 DATA SOURCE 
+
 The data was gotten from https://divvy-tripdata.s3.amazonaws.com/index.html
 
 DATA PREPARATION AND PROCESSING
+
 For this analysis, i used the data from 2021-05 to 2022-04. The data was downloaded from the provided link as zip files after which they were converted into CSV. Considering the volume of the data, i decided to analyze using MySQL Workbench and Tableau was used for visualization.
 The CSV files were imported into MySQL Workbench. A new schema was created and then the 12 months data was imported into seperate tables using "Table Data Import Wizard". 
 
