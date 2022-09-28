@@ -1,16 +1,16 @@
--- Search for duplicate data in all tables
+-- Checked to ensure that there are no duplicates in the tables  
 SELECT ride_id, COUNT(ride_id) 
 FROM Cyclistic_bike_share. 2021_05
 GROUP BY ride_id
 HAVING COUNT(ride_id) > 1;
 
--- Change column data type from text to datetime
+-- Changed column data type from text to datetime for all tables
 
 ALTER TABLE 2021_05
 MODIFY COLUMN started_at datetime,
 MODIFY COLUMN ended_at datetime; 
 
--- Join all 12 tables and create a new view
+-- Joined all 12 tables into a single table and created a new view
 
 CREATE VIEW bike_share AS (SELECT * FROM Cyclistic_bike_share. 2021_05
 	UNION SELECT * FROM Cyclistic_bike_share. 2021_06
@@ -25,8 +25,7 @@ CREATE VIEW bike_share AS (SELECT * FROM Cyclistic_bike_share. 2021_05
     UNION SELECT * FROM Cyclistic_bike_share. 2022_03
     UNION SELECT * FROM Cyclistic_bike_share. 2022_04);
 
---Extract date and time from a datetime data type
-
+--Seperated the date and time from a started_at and ended_at columns to calculate the duration of rides.
 SELECT CAST(started_at AS TIME), 
 CAST(ended_at AS TIME), 
 CAST(started_at AS DATE), 
@@ -34,7 +33,15 @@ CAST(ended_at AS DATE)
 FROM Cyclistic_bike_share.bike_share;
 
 
--- A new table was created
+-- Checked for distinct rideable_type to identify the types of bikes available
+SELECT DISTINCT(rideable_type) 
+FROM Cyclistic_bike_share. bike_share
+
+-- Checked the member_casual column to ensure that it contains just member and casual 
+SELECT DISTINCT(member_casual)
+FROM Cyclistic_bike_share. bike_share;
+
+-- Created a new table that shows the day of the week a ride was taken, the month name seperately and calculated the duration of each rides.
 
 CREATE TABLE bike AS (SELECT member_casual, 
 CAST(started_at AS TIME) AS start_time, 
@@ -45,12 +52,52 @@ DAYNAME(started_at) AS day_name, MONTHNAME(started_at) AS month_name,
 bs.ended_at - bs.started_at AS duration
 FROM Cyclistic_bike_share.bike_share AS bs);
 
--- Aggerate Function
+-- The duration column was checked for negative values 
+SELECT duration
+ FROM Cyclistic_bike_share.bike
+ WHERE duration <0;
 
-SELECT COUNT(*)
-FROM bike
-WHERE month_name = 'May' AND member_casual = 'casual';
+-- Removed rows with negative values in the duration column
+DELETE FROM Cyclistic_bike_share.bike
+WHERE duration <0;
 
-SELECT COUNT(*)
-FROM bike
-WHERE month_name = 'June' AND member_casual = 'member';
+-- The total number of rides members and casual riders was calculated
+SELECT member_casual, count(*) AS total_num_of_rides
+FROM Cyclistic_bike_share. bike
+GROUP BY  member_casual; 
+
+-- The number of rides in each month was calcuated for both member and casual riders. 
+
+SELECT member_casual, month_name, count(*) AS total_rides_per_month
+FROM Cyclistic_bike_share. bike
+GROUP BY  member_casual, month_name; 
+
+--The number of rides per day was calcuated for both member and casual riders. 
+SELECT member_casual, day_name, count(*) AS total_rides_per_weekday
+FROM Cyclistic_bike_share. bike
+GROUP BY  member_casual, day_name; 
+
+
+-- The minimum, maximum and average ride duration for both member and causal riders was calculated
+SELECT member_casual, MAX(duration), MIN(duration), AVG(duration)
+FROM Cyclistic_bike_share. bike
+GROUP BY  member_casual;
+
+-- The distance of each ride was calculated using the formula d = √((x2 - x1)^2 + (y2 - y1)^2) 
+SELECT member_casual,rideable_type, DAYNAME(started_at) AS day_name, 
+MONTHNAME(started_at) AS month_name,
+round(SQRT(POW(end_lng - start_lng,2)+POW(end_lat - start_lat,2)),2) AS distance
+FROM Cyclistic_bike_share. bike_share;
+
+-- A new table was created to get the number of rides taken by casual riders and member in each station 
+CREATE TABLE station_name AS 
+	(SELECT member_casual, 
+    start_station_name, 
+    end_station_name, 
+    COUNT(*) AS num_of_rides_per_station
+FROM Cyclistic_bike_share. bike_share
+GROUP BY  member_casual, start_station_name, end_station_name); 
+
+-- Blank rows were deleted from the table 'station_name'
+DELETE FROM Cyclistic_bike_share.station_name
+WHERE start_station_name = '' OR end_station_name = '';
