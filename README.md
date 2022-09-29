@@ -26,14 +26,20 @@ Check out my visualizations on Tableau Public via this link https://public.table
 
 Based on the analysis of the 12 months data to compare and discern how annual members and casual riders use cylistic bikes differently, the following were observed;
 
-1. The percentage of Annual members that use cyclists bike is 11.96% more than casual riders
-2. Bikes are generally used a lot more during summer but the number of casual riders using the bikes are more than annual members in that season. Annual members use the bikes more during the other season of the year. 
-3. Casual riders tend to use the rides more for longer duration. There is a significance increase in the duration on Fridays and in December. 
-4. Casual riders use the bikes more on weekends while annual members tend to use rides more on weekdays 
-5. Both Annual members and casual riders prefer to use the classic bikes followed by the electric bikes. Annual members do not use the docked bikes.  
-6. There is no significant difference in the distance of rides but casual riders tend to use the bikes for a slightly longer distance than annual members.
+1.The percentage of Annual members that use cyclists bike is 11.96% more than casual riders.
+
+2.Bikes are generally used a lot more during summer but the number of casual riders using the bikes are more than annual members in that season. Annual members use the bikes more during the other season of the year. 
+
+3.Casual riders use the bikes more on weekends while annual members tend to use rides more on weekdays.
+
+4.Bikes are used for a much longer duration in December but  Casual riders tend to use the rides for longer duration in that month. Casual riders also use the rides for a slightly longer duration in summer months. Casual riders use bikes for a longer duration during on weekdays and weekends than annual members and there is a notable increase in the duration of use on Fridays. 
+
+5.Both Annual members and casual riders prefer to  use the classic bikes followed by the electric bikes. Annual members do not use the docked bikes.  
+
+6.There is no significant difference in the distance of rides but casual memebers tend to use it for a slightly longer distance.
 
 **Recommendations**
+
 1. Marketing campaign should focus more on the start stations with more casual riders. It could be by sharing flyers, digital media  or in person advert.
 2. The campaign should be done mostly during the summer as a lot more casual riders use the bike at that time of the year.
 3. An email could be sent to all casual riders informing them about the benefits of annual membership.
