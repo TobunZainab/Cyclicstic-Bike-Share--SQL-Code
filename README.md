@@ -6,17 +6,13 @@ Project Name: Cyclistic Bike Share
 
 Cyclistic is a bike share program with over 5,800 bicycles locked in a network of 692 stations across Chicago, United States. Cyclistics offer a variety of bike types such as: reclining bikes, hand tricycles and cargo bikes making bike share more inclusive to people with disabilities and riders who cannot use a standard two-wheeled bike. Cyclistic also have a flexible pricing plans: single-ride passes, full-day passess and annual membeships. 
 
-**BUSINESS GOAL**
-
-The company aims to design marketing strategies to convert casual riders into annual member as it is has been concluded that annual members are much more profitable thancasual riders. The marketing team needs to better understand how annual members and casual riders differ and why casual riders will buy annual membership. 
-
 **BUSINESS TASK**
 
-Analyse 12 months data of the cyclistic bike share program to study trends of users inorder to help create a good marketing strategy.
+The company aims to design marketing strategies to convert casual riders into annual members as it is has been concluded that annual membership is much more profitable than casual riders. The marketing team needs to better understand how annual members and casual riders differ and why casual riders will buy annual membership. 
 
 **DATA SOURCE**
 
-The data was gotten from https://divvy-tripdata.s3.amazonaws.com/index.html
+12 months data of the cyclistic bike share program was analysed. The data was gotten from https://divvy-tripdata.s3.amazonaws.com/index.html
 
 **DATA PREPARATION AND PROCESSING**
 
@@ -38,9 +34,9 @@ Based on the analysis of the 12 months data to compare and discern how annual me
 6. There is no significant difference in the distance of rides but casual riders tend to use the bikes for a slightly longer distance than annual members.
 
 **Recommendations**
-1. Marketing campaign should focus more on the start stations with more casual riders. It could be by sharing flyers or in person advert.
+1. Marketing campaign should focus more on the start stations with more casual riders. It could be by sharing flyers, digital media  or in person advert.
 2. The campaign should be done mostly during the summer as a lot more casual riders use the bike at that time of the year.
 3. An email could be sent to all casual riders informing them about the benefits of annual membership.
-4. Yearly bonus or rewards should be offered  to riders with annual membership. 
+4. Yearly bonus or rewards should be offered to riders with annual membership. 
 
 
