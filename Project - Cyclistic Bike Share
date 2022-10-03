@@ -83,11 +83,15 @@ SELECT member_casual, MAX(duration), MIN(duration), AVG(duration)
 FROM Cyclistic_bike_share. bike
 GROUP BY  member_casual;
 
--- The distance of each ride was calculated using the formula d = √((x2 - x1)^2 + (y2 - y1)^2) 
-SELECT member_casual,rideable_type, DAYNAME(started_at) AS day_name, 
-MONTHNAME(started_at) AS month_name,
-round(SQRT(POW(end_lng - start_lng,2)+POW(end_lat - start_lat,2)),2) AS distance
-FROM Cyclistic_bike_share. bike_share;
+-- The distance of each ride was calculated
+SELECT member_casual, dayname(started_at) AS day_name, Monthname(started_at) AS month_name,
+   111.111 *
+    DEGREES(ACOS(LEAST(1.0, COS(RADIANS(start_lat))
+         * COS(RADIANS(end_lat))
+         * COS(RADIANS(end_lng - start_lng))
+         + SIN(RADIANS(start_lat))
+         * SIN(RADIANS(end_lat))))) AS distance_in_km
+  FROM Cyclistic_bike_share.bike_share;
 
 -- A new table was created to get the number of rides taken by casual riders and member in each station 
 CREATE TABLE station_name AS 
@@ -101,3 +105,4 @@ GROUP BY  member_casual, start_station_name, end_station_name);
 -- Blank rows were deleted from the table 'station_name'
 DELETE FROM Cyclistic_bike_share.station_name
 WHERE start_station_name = '' OR end_station_name = '';
+
