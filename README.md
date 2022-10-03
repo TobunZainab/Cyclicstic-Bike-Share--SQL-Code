@@ -35,8 +35,7 @@ Based on the analysis of the 12 months data to compare and discern how annual me
 4.  Bikes are used for a much longer duration in December but  Casual riders tend to use the rides for a longer duration in that month. Casual riders also use the rides for a slightly longer duration in the summer months. Casual riders use bikes for a longer duration during on weekdays and weekends than annual members and there is a notable increase in the duration of use on Fridays. 
 
 5.  Annual members and casual riders prefer to use classic bikes followed by electric bikes. Annual members do not use docked bikes.  
-
-6.  There is no significant difference in the distance of rides but casual members tend to use it for a slightly longer distance.
+6.  Casual riders tend to ride for a slightly longer distance on weekends than weekdays. 
 
 **Recommendations**
 
